@@ -24,10 +24,10 @@ class ViewController: UIViewController {
     //PW Array to hold the questions
     
     let quizArray = [
-        ["4 + 2 = 6", "True"],
-        ["5 - 3 > 1", "True"],
-        ["3 + 8 < 10", "False"]
-    ]
+        Question(text: "4 + 2 = 6", answer: "True"),
+        Question(text: "5 - 3 > 1", answer: "True"),
+        Question(text: "3 + 8 < 10", answer: "False"),
+        ]
     
     // to create a structure to hold the Q&A instead
     
@@ -46,8 +46,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func answerButtonPressed(_ sender: UIButton) {
-        let userAnswer = sender.currentTitle
-        let actualAnswer = quizArray[questionNumber][1]
+        let userAnswer = sender.currentTitle // True or False
+        
+// option 1
+        let actualAnswer = quizArray[questionNumber].answer
+        
+// option 2
+//        let actualQuestion = quizArray[questionNumber]
+//        let actualAnswer = actualQuestion.answer
+        
         
         if userAnswer == actualAnswer {
             print("Right!")
@@ -76,7 +83,7 @@ class ViewController: UIViewController {
     // function to update the question displayed
     
     func updateUI() {
-        questionLabel.text = quizArray[questionNumber][0]
+        questionLabel.text = quizArray[questionNumber].text
     }
     
 
